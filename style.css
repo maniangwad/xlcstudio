@@ -11,6 +11,10 @@ body {
   font-family: Arial, sans-serif;
 }
 
+button, select, input {
+  font: inherit;
+}
+
 .navbar {
   height: 76px;
   padding: 0 7%;
@@ -132,7 +136,7 @@ body {
   padding: 20px;
 }
 
-.upload-area:hover {
+.upload-area:hover, .upload-area.dragging {
   border-color: #659bff;
   background: #192333;
 }
@@ -159,21 +163,34 @@ body {
   overflow-wrap: anywhere;
 }
 
-.secondary-button, .primary-button {
+.primary-button,
+.secondary-button,
+.download-button {
   border: none;
   border-radius: 6px;
   padding: 14px;
   width: 100%;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.primary-button {
+  background: #477eea;
+  color: white;
+}
+
+.primary-button:hover:not(:disabled) {
+  background: #326bd8;
 }
 
 .secondary-button {
   background: #252c37;
   color: #dce2eb;
+  margin-top: 10px;
 }
 
-.primary-button {
+.download-button {
   background: #e8edf5;
   color: #10141c;
   margin-top: 16px;
@@ -197,50 +214,44 @@ button:disabled {
 }
 
 .studio-preview {
-  min-height: 300px;
+  min-height: 340px;
   border-radius: 8px;
   overflow: hidden;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #fff;
+  background: #ffffff;
   transition: background 0.2s;
 }
 
 .studio-preview.grey {
-  background: #bfc2c8;
+  background: #c5c8ce;
 }
 
 .studio-preview.dark {
-  background: #20242d;
+  background: #252a32;
 }
 
 .studio-preview.blue {
   background: #14243b;
 }
 
-.studio-floor {
-  position: absolute;
-  height: 25%;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  border-top: 1px solid rgba(0,0,0,0.06);
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.01),
-    rgba(0,0,0,0.07)
-  );
+.studio-preview.black {
+  background: #090a0d;
+}
+
+.studio-preview.custom {
+  background: #dfe4eb;
 }
 
 #vehiclePreview {
-  width: 90%;
-  height: 270px;
+  max-width: 94%;
+  max-height: 310px;
   object-fit: contain;
   position: relative;
   z-index: 2;
-  filter: drop-shadow(0 18px 12px rgba(0,0,0,0.22));
+  filter: drop-shadow(0 15px 12px rgba(0,0,0,0.22));
 }
 
 .empty-preview {
@@ -255,7 +266,8 @@ button:disabled {
   margin-top: 20px;
 }
 
-.studio-controls label {
+.studio-controls label,
+.custom-color-row label {
   display: block;
   font-size: 10px;
   color: #8d98a8;
@@ -272,7 +284,47 @@ select {
   border-radius: 6px;
 }
 
-.notice {
+.custom-color-row {
+  margin-top: 15px;
+}
+
+.custom-color-row input {
+  width: 100%;
+  height: 45px;
+  border: 1px solid #343d4b;
+  border-radius: 6px;
+  background: #1a202a;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.progress-container {
+  margin-top: 20px;
+}
+
+.progress-track {
+  height: 7px;
+  background: #252c37;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background: #4b8cff;
+  border-radius: 20px;
+  transition: width 0.3s;
+}
+
+.progress-container p {
+  margin-top: 10px;
+  font-size: 11px;
+  color: #aab4c4;
+  line-height: 1.6;
+}
+
+.privacy-note, .notice {
   color: #8290a2;
   font-size: 10px;
   line-height: 1.7;
@@ -315,6 +367,10 @@ footer {
   color: #788292;
   font-size: 9px;
   letter-spacing: 1px;
+}
+
+[hidden] {
+  display: none !important;
 }
 
 @media (max-width: 750px) {
