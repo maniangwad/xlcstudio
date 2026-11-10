@@ -9,150 +9,166 @@
   <title>GTA Vehicle Studio</title>
 
   <meta name="description"
-    content="Transform GTA vehicle screenshots into professional studio presentations.">
+    content="AI-powered GTA vehicle background removal and studio photography.">
 
   <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
 
-  <header class="navbar">
-    <a class="brand" href="./">
-      <span class="brand-icon">VS</span>
-      <span>GTA VEHICLE STUDIO</span>
-    </a>
-
-    <span class="version">BETA 0.1</span>
-  </header>
-
-  <main class="container">
-
-    <section class="hero">
-      <span class="eyebrow">VEHICLE PHOTOGRAPHY PLATFORM</span>
-
-      <h1>
-        YOUR VEHICLE.<br>
-        <span>OUR STUDIO.</span>
-      </h1>
-
-      <p>
-        Give your GTA vehicles a professional studio presentation.
-        Upload, customize and prepare your vehicle images.
-      </p>
-    </section>
-
-    <section class="workspace">
-
-      <div class="workspace-heading">
-        <div>
-          <span class="section-label">01 / WORKSPACE</span>
-          <h2>Vehicle Editor</h2>
-        </div>
-        <span class="local-badge">BROWSER BASED</span>
-      </div>
-
-      <div class="editor-grid">
-
-        <div class="upload-panel">
-          <label class="section-label">UPLOAD VEHICLE</label>
-
-          <label class="upload-area" for="vehicleInput">
-            <span class="upload-icon">↑</span>
-            <strong>Drop your vehicle here</strong>
-            <span>or click to browse files</span>
-            <small>PNG, JPG, WEBP · Maximum 15 MB</small>
-          </label>
-
-          <input
-            type="file"
-            id="vehicleInput"
-            accept="image/png,image/jpeg,image/webp"
-            hidden
-          >
-
-          <p id="fileName" class="file-name">
-            No vehicle uploaded
-          </p>
-
-          <button id="removeButton" class="secondary-button" disabled>
-            Remove vehicle
-          </button>
-        </div>
-
-        <div class="preview-panel">
-
-          <div class="preview-heading">
-            <span class="section-label">LIVE PREVIEW</span>
-            <span id="previewStatus">WAITING FOR IMAGE</span>
-          </div>
-
-          <div class="studio-preview" id="studioPreview">
-
-            <div class="studio-floor"></div>
-
-            <img
-              id="vehiclePreview"
-              alt="Uploaded GTA vehicle preview"
-              hidden
-            >
-
-            <div id="emptyPreview" class="empty-preview">
-              <span>YOUR VEHICLE WILL APPEAR HERE</span>
-            </div>
-
-          </div>
-
-          <div class="studio-controls">
-            <label for="studioSelect">STUDIO ENVIRONMENT</label>
-
-            <select id="studioSelect">
-              <option value="white">Pure White Studio</option>
-              <option value="grey">Light Grey Studio</option>
-              <option value="dark">Dark Premium Studio</option>
-              <option value="blue">Electric Blue Studio</option>
-            </select>
-          </div>
-
-          <button id="downloadButton" class="primary-button" disabled>
-            Download Preview
-          </button>
-
-          <p class="notice">
-            Phase 1 preview supports transparent images.
-            Automatic AI background removal is coming in Phase 2.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <section class="bottom-info">
-      <div>
-        <strong>IMAGE PROCESSING</strong>
-        <span>Planned</span>
-      </div>
-
-      <div>
-        <strong>3D VEHICLE RENDERING</strong>
-        <span>Planned</span>
-      </div>
-
-      <div>
-        <strong>CUSTOM STUDIOS</strong>
-        <span>Preview available</span>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
+<header class="navbar">
+  <a class="brand" href="./">
+    <span class="brand-icon">VS</span>
     <span>GTA VEHICLE STUDIO</span>
-    <span>BUILT FOR VEHICLE CREATORS</span>
-  </footer>
+  </a>
+  <span class="version">AI EDITION / 0.2</span>
+</header>
 
-  <script src="./script.js"></script>
+<main class="container">
+
+  <section class="hero">
+    <span class="eyebrow">AI VEHICLE PHOTOGRAPHY PLATFORM</span>
+
+    <h1>YOUR VEHICLE.<br><span>OUR STUDIO.</span></h1>
+
+    <p>
+      Remove your GTA vehicle's original background and
+      transform it into professional studio photography.
+    </p>
+  </section>
+
+  <section class="workspace">
+
+    <div class="workspace-heading">
+      <div>
+        <span class="section-label">01 / WORKSPACE</span>
+        <h2>Vehicle Editor</h2>
+      </div>
+      <span class="local-badge">PRIVATE PROCESSING</span>
+    </div>
+
+    <div class="editor-grid">
+
+      <div class="upload-panel">
+
+        <label class="section-label">UPLOAD VEHICLE</label>
+
+        <label class="upload-area" id="uploadArea" for="vehicleInput">
+          <span class="upload-icon">↑</span>
+          <strong>Drop your vehicle here</strong>
+          <span>or click to browse files</span>
+          <small>PNG, JPG, WEBP · Maximum 15 MB</small>
+        </label>
+
+        <input
+          type="file"
+          id="vehicleInput"
+          accept="image/png,image/jpeg,image/webp"
+          hidden
+        >
+
+        <p id="fileName" class="file-name">
+          No vehicle uploaded
+        </p>
+
+        <button id="removeBgButton" class="primary-button" disabled>
+          Remove Background with AI
+        </button>
+
+        <button id="removeButton" class="secondary-button" disabled>
+          Remove Uploaded Image
+        </button>
+
+        <div class="progress-container" id="progressContainer" hidden>
+          <div class="progress-track">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+          <p id="progressText">Preparing AI engine...</p>
+        </div>
+
+        <p class="privacy-note">
+          Your vehicle image is processed inside your browser.
+          It is not uploaded to our server.
+        </p>
+
+      </div>
+
+      <div class="preview-panel">
+
+        <div class="preview-heading">
+          <span class="section-label">LIVE PREVIEW</span>
+          <span id="previewStatus">WAITING FOR IMAGE</span>
+        </div>
+
+        <div class="studio-preview" id="studioPreview">
+
+          <img id="vehiclePreview" alt="Vehicle preview" hidden>
+
+          <div id="emptyPreview" class="empty-preview">
+            <span>YOUR VEHICLE WILL APPEAR HERE</span>
+          </div>
+
+        </div>
+
+        <div class="studio-controls">
+
+          <label for="studioSelect">STUDIO ENVIRONMENT</label>
+
+          <select id="studioSelect">
+            <option value="white">Pure White Studio</option>
+            <option value="grey">Light Grey Studio</option>
+            <option value="dark">Dark Premium Studio</option>
+            <option value="blue">Electric Blue Studio</option>
+            <option value="black">Black Studio</option>
+            <option value="custom">Custom Colour Studio</option>
+          </select>
+
+          <div class="custom-color-row" id="customColorRow" hidden>
+            <label for="customColor">CUSTOM BACKGROUND COLOUR</label>
+            <input type="color" id="customColor" value="#dfe4eb">
+          </div>
+
+        </div>
+
+        <button id="downloadButton" class="download-button" disabled>
+          Download HD Studio Image
+        </button>
+
+        <p class="notice" id="downloadNotice">
+          Remove the original background first to enable HD export.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="bottom-info">
+    <div>
+      <strong>AI BACKGROUND REMOVAL</strong>
+      <span>BEN2 Engine</span>
+    </div>
+
+    <div>
+      <strong>IMAGE PROCESSING</strong>
+      <span>Browser-based</span>
+    </div>
+
+    <div>
+      <strong>STUDIO EXPORT</strong>
+      <span>HD PNG</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>GTA VEHICLE STUDIO</span>
+  <span>BUILT FOR VEHICLE CREATORS</span>
+</footer>
+
+<script type="module" src="./script.js"></script>
 
 </body>
 </html>
