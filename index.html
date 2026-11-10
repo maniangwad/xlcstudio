@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090b0f">
+
+  <title>GTA Vehicle Studio</title>
+
+  <meta name="description"
+    content="Transform GTA vehicle screenshots into professional studio presentations.">
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <a class="brand" href="./">
+      <span class="brand-icon">VS</span>
+      <span>GTA VEHICLE STUDIO</span>
+    </a>
+
+    <span class="version">BETA 0.1</span>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <span class="eyebrow">VEHICLE PHOTOGRAPHY PLATFORM</span>
+
+      <h1>
+        YOUR VEHICLE.<br>
+        <span>OUR STUDIO.</span>
+      </h1>
+
+      <p>
+        Give your GTA vehicles a professional studio presentation.
+        Upload, customize and prepare your vehicle images.
+      </p>
+    </section>
+
+    <section class="workspace">
+
+      <div class="workspace-heading">
+        <div>
+          <span class="section-label">01 / WORKSPACE</span>
+          <h2>Vehicle Editor</h2>
+        </div>
+        <span class="local-badge">BROWSER BASED</span>
+      </div>
+
+      <div class="editor-grid">
+
+        <div class="upload-panel">
+          <label class="section-label">UPLOAD VEHICLE</label>
+
+          <label class="upload-area" for="vehicleInput">
+            <span class="upload-icon">↑</span>
+            <strong>Drop your vehicle here</strong>
+            <span>or click to browse files</span>
+            <small>PNG, JPG, WEBP · Maximum 15 MB</small>
+          </label>
+
+          <input
+            type="file"
+            id="vehicleInput"
+            accept="image/png,image/jpeg,image/webp"
+            hidden
+          >
+
+          <p id="fileName" class="file-name">
+            No vehicle uploaded
+          </p>
+
+          <button id="removeButton" class="secondary-button" disabled>
+            Remove vehicle
+          </button>
+        </div>
+
+        <div class="preview-panel">
+
+          <div class="preview-heading">
+            <span class="section-label">LIVE PREVIEW</span>
+            <span id="previewStatus">WAITING FOR IMAGE</span>
+          </div>
+
+          <div class="studio-preview" id="studioPreview">
+
+            <div class="studio-floor"></div>
+
+            <img
+              id="vehiclePreview"
+              alt="Uploaded GTA vehicle preview"
+              hidden
+            >
+
+            <div id="emptyPreview" class="empty-preview">
+              <span>YOUR VEHICLE WILL APPEAR HERE</span>
+            </div>
+
+          </div>
+
+          <div class="studio-controls">
+            <label for="studioSelect">STUDIO ENVIRONMENT</label>
+
+            <select id="studioSelect">
+              <option value="white">Pure White Studio</option>
+              <option value="grey">Light Grey Studio</option>
+              <option value="dark">Dark Premium Studio</option>
+              <option value="blue">Electric Blue Studio</option>
+            </select>
+          </div>
+
+          <button id="downloadButton" class="primary-button" disabled>
+            Download Preview
+          </button>
+
+          <p class="notice">
+            Phase 1 preview supports transparent images.
+            Automatic AI background removal is coming in Phase 2.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="bottom-info">
+      <div>
+        <strong>IMAGE PROCESSING</strong>
+        <span>Planned</span>
+      </div>
+
+      <div>
+        <strong>3D VEHICLE RENDERING</strong>
+        <span>Planned</span>
+      </div>
+
+      <div>
+        <strong>CUSTOM STUDIOS</strong>
+        <span>Preview available</span>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <span>GTA VEHICLE STUDIO</span>
+    <span>BUILT FOR VEHICLE CREATORS</span>
+  </footer>
+
+  <script src="./script.js"></script>
+
+</body>
+</html>
